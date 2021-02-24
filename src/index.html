@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Instagram Template</title>
+    <meta charset="UTF-8" />
+    <meta name="author" content="MOURCHID Mohamed Kamal" />
+    <meta name="description" content="Like Instagram template with Vue.Js" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="github" content="https://github.com/mohkamal" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/app.css" />
+</head>
+
+<body>
+    <div id="root">
+        <nav-bar></nav-bar>
+        <!-- Content Start -->
+        <div class="container custom-container mt-5 pg-sm-0 main">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <post v-for="post in posts" :post="post" :key="post.id"></post>
+                </div>
+                <div class="col-lg-4 hide-sm my-5">
+                    <!-- Side Bar Start -->
+                    <div class="container side-bar">
+                        <div class="row">
+                            <!-- Card Start -->
+                            <sidebar-profile></sidebar-profile>
+                            <!-- Card End -->
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <h5 class="section-title">Suggestions For You</h5>
+                            </div>
+                            <div class="col-3">
+                                <a href="#" class="see-all">See All</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <sidebar-user v-for="sug in suggestions" :key="sug.id" :img="sug.img" :username="sug.username" :hint="sug.hint"></sidebar-user>
+                        </div>
+                        <div class="row my-3">
+                            <p>
+                                <a href="#" class="help-link">About</a><span class="help-link"> . </span>
+                                <a href="#" class="help-link">Help</a><span class="help-link"> . </span>
+                                <a href="#" class="help-link">Press</a><span class="help-link"> . </span>
+                                <a href="#" class="help-link">API</a><span class="help-link"> . </span>
+                                <a href="#" class="help-link">Jobs</a><span class="help-link"> . </span>
+                                <a href="#" class="help-link">Privacy</a><span class="help-link"> . </span>
+                                <a href="#" class="help-link">Terms</a><span class="help-link"> . </span>
+                                <a href="#" class="help-link">Locations</a><span class="help-link"> . </span>
+                                <a href="#" class="help-link">Top Accounts</a><span class="help-link"> . </span>
+                                <a href="#" class="help-link">Hashtags</a><span class="help-link"> . </span>
+                                <a href="#" class="help-link">Language</a><span class="help-link"> . </span>
+                            </p>
+                        </div>
+
+                        <div class="row">
+                            <span class="copyright">© 2021 Instagram par Facebook</span>
+                        </div>
+                    </div>
+                    <!-- Side Bar End -->
+                </div>
+            </div>
+        </div>
+        <!-- Content End -->
+    </div>
+
+    <script src="assets/js/jquery-3.5.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/vue.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>

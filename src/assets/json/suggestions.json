@@ -1,0 +1,37 @@
+[{
+        "id": 0,
+        "username": "driss_mouca",
+        "hint": "Suggested for you",
+        "img": "assets/images/profile_01.jpg"
+    },
+    {
+        "id": 1,
+        "username": "souka_boma",
+        "hint": "Suggested for you",
+        "img": "assets/images/profile_02.jpg"
+    },
+    {
+        "id": 2,
+        "username": "vib_cool",
+        "hint": "Follows you",
+        "img": "assets/images/profile_03.jpg"
+    },
+    {
+        "id": 3,
+        "username": "hamid_souna",
+        "hint": "Suggested for you",
+        "img": "assets/images/profile_04.jpg"
+    },
+    {
+        "id": 4,
+        "username": "salima_chikh455",
+        "hint": "Follows you",
+        "img": "assets/images/profile_05.jpg"
+    },
+    {
+        "id": 5,
+        "username": "salon_farah_rabat",
+        "hint": "Follows you",
+        "img": "assets/images/profile_03.jpg"
+    }
+]

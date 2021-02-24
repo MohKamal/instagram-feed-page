@@ -1,0 +1,42 @@
+[{
+        "id": 0,
+        "img": "assets/images/post.jpg",
+        "logo": "assets/images/post_logo.jpg",
+        "username": "bugatti",
+        "location": "Willow Springs, California",
+        "description": "A few lucky BUGATTI enthusiasts had the chance to drive the BUGATTI Baby II at top speed in its delimited “speed key” mode on the historic racetrack at the renowned Willow Springs International Raceway. The Southern California sunset always creates a spectacular setting.",
+        "likes": 86267,
+        "tags": ["#BUGATTI", "#BUGATTIBabyII", "#BABYII"],
+        "comments_count": 232,
+        "date": "Feb 24, 2021",
+        "time": "2 hours",
+        "comments": [{
+            "username": "rriley0123",
+            "comment": " ❤️❤️"
+        }, {
+            "username": "kleidi_mullaj21",
+            "comment": " <a href='#' class='comment-user-tag'>@mannykhoshbin</a> you are one of them😂"
+        }]
+    },
+
+    {
+        "id": 1,
+        "img": "assets/images/post_01.jpg",
+        "logo": "assets/images/post_logo.jpg",
+        "username": "bugatti",
+        "location": "Original Audio",
+        "description": "Extreme, radical, and contemporary, the BUGATTI Bolide is the most uncompromising expression from the BUGATTI design team and represents everything that BUGATTI is capable of.",
+        "likes": 192494,
+        "tags": ["#BUGATTI", "#BUGATTIBabyII", "#BABYII"],
+        "comments_count": 373,
+        "date": "Feb 19, 2021",
+        "time": "5 days",
+        "comments": [{
+            "username": "aseya_jain",
+            "comment": " 🔥🔥"
+        }, {
+            "username": "miisoooe",
+            "comment": " I hope this go into Production 👏"
+        }]
+    }
+]
