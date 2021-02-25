@@ -62,11 +62,6 @@ Vue.component('sidebar-user', {
 });
 
 Vue.component('sidebar-profile', {
-    data: function() {
-        return {
-            count: 0
-        }
-    },
     template: `
     <div class="row align-items-center my-1">
         <div class="col-2">
@@ -82,10 +77,17 @@ Vue.component('sidebar-profile', {
     </div>`
 });
 
+Vue.component('emoji-btn', {
+    props: ["emoji"],
+    template: `
+    <button class="flat-btn"><span v-html="emoji"></span></button>`
+});
+
 Vue.component('post', {
     data: function() {
         return {
-            writing: false
+            writing: false,
+            emojis: ["&#128507;", "&#128508;", "&#128509;", "&#128510;", "&#128511;", "&#128512;", "&#128513;", "&#128514;", "&#128515;", "&#128515;", "&#128517;"]
         }
     },
     props: {
@@ -115,9 +117,9 @@ Vue.component('post', {
                 </p>
             </div>
             <div class="col-1 post-burger">
-                <a href="#">
+                <button class="post-burger-btn" data-bs-toggle="modal" data-bs-target="#postOptionsModal">
                     <svg aria-label="Plus d’options" class="_8-yf5 " fill="#262626" height="16" viewBox="0 0 48 48" width="16"><circle clip-rule="evenodd" cx="8" cy="24" fill-rule="evenodd" r="4.5"></circle><circle clip-rule="evenodd" cx="24" cy="24" fill-rule="evenodd" r="4.5"></circle><circle clip-rule="evenodd" cx="40" cy="24" fill-rule="evenodd" r="4.5"></circle></svg>
-                </a>
+                </button>
             </div>
         </div>
         <div class="row">
@@ -175,9 +177,9 @@ Vue.component('post', {
                 <form>
                     <div class="row post-comment-form pt-3 mt-2">
                         <div class="col-1 d-flex justify-content-center">
-                            <a href="#">
+                            <button class="flat-btn emojis-btn" @click.prevent>
                                 <svg aria-label="Emoji" class="_8-yf5 " fill="#262626" height="24" viewBox="0 0 48 48" width="24"><path d="M24 48C10.8 48 0 37.2 0 24S10.8 0 24 0s24 10.8 24 24-10.8 24-24 24zm0-45C12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21S35.6 3 24 3z"></path><path d="M34.9 24c0-1.4-1.1-2.5-2.5-2.5s-2.5 1.1-2.5 2.5 1.1 2.5 2.5 2.5 2.5-1.1 2.5-2.5zm-21.8 0c0-1.4 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5-2.5-1.1-2.5-2.5zM24 37.3c-5.2 0-8-3.5-8.2-3.7-.5-.6-.4-1.6.2-2.1.6-.5 1.6-.4 2.1.2.1.1 2.1 2.5 5.8 2.5 3.7 0 5.8-2.5 5.8-2.5.5-.6 1.5-.7 2.1-.2.6.5.7 1.5.2 2.1 0 .2-2.8 3.7-8 3.7z"></path></svg>
-                            </a>
+                            </button>
                         </div>
                         <div class="col-9 d-flex justify-content-center">
                             <input placeholder="Ajouter un commentaire..." class="post-comment-input" @keyup="commenting"/>
@@ -214,4 +216,31 @@ var vm = new Vue({
 
     }
 
+});
+
+// Jqeury
+
+$(document).ready(function() {
+    $(".more").toggle(function() {
+        $(this).text("less..").siblings(".complete").show();
+    }, function() {
+        $(this).text("more..").siblings(".complete").hide();
+    });
+
+    $('.emojis-btn').popover({
+        container: 'body',
+        title: "Emoji's",
+        animation: true,
+        html: true,
+        placement: "top",
+        content: function() {
+            var btns = '<div class="row">';
+            var codes = ['&#128507;', '&#128508;', '&#128509;', '&#128510;', '&#128511;', '&#128512;', '&#128513;', '&#128514;', '&#128515;', '&#128516;', '&#128517;'];
+            $.each(codes, function(key, value) {
+                btns += `<div class="col-3"><a href="javascript:void(0)" class="flat-btn" data-value="${value}"><span>${value}</span></a></div>`;
+            });
+            btns += '</div>'
+            return btns;
+        }
+    })
 });

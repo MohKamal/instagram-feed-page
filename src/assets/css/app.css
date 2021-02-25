@@ -18,6 +18,11 @@ body {
     font-size: 1rem;
 }
 
+.flat-btn {
+    border: unset;
+    background-color: #fff;
+}
+
 
 /* NavBar */
 
@@ -137,6 +142,11 @@ body {
 
 .post-burger {
     margin: auto 0;
+}
+
+.post-burger-btn {
+    background-color: #fff;
+    border: unset;
 }
 
 .post-location {
@@ -277,6 +287,58 @@ body {
 .post-comment-input-disabled {
     cursor: default;
     opacity: 0.5;
+}
+
+.more {
+    color: #8e8e8e;
+    text-decoration: none;
+}
+
+.descriptionSpan {
+    height: 20px;
+}
+
+.more:hover {
+    text-decoration: none;
+    color: #8e8e8e;
+}
+
+
+/* Post Options */
+
+.danger-btn {
+    color: #ed4956;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+}
+
+.option-btn {
+    width: 100%;
+    border: unset;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+    font-size: .9rem;
+    font-weight: 400;
+}
+
+.modal-edit {
+    max-width: 400px !important;
+    -webkit-border-radius: 100px !important;
+    -moz-border-radius: 100px !important;
+    border-radius: 100px !important;
+}
+
+.fade-scale {
+    transform: scale(0);
+    opacity: 0;
+    -webkit-transition: all .10s linear;
+    -o-transition: all .10s linear;
+    transition: all .10s linear;
+}
+
+.fade-scale.show {
+    opacity: 1;
+    transform: scale(1);
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
