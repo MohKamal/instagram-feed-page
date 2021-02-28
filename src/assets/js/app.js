@@ -239,20 +239,23 @@ $(document).ready(function() {
         }
     });
 
-    $('.post-logo-btn').popover({
-        container: 'body',
-        title: function() {
-            return getHeader();
-        },
-        animation: true,
-        template: getTemplate(),
-        html: true,
-        placement: "bottom",
-        content: function() {
-            return getBody();
-        }
+    if (typeof window.orientation === 'undefined') {
+        $('.post-logo-btn').popover({
+            container: 'body',
+            trigger: 'focus',
+            title: function() {
+                return getHeader();
+            },
+            animation: true,
+            template: getTemplate(),
+            html: true,
+            placement: "bottom",
+            content: function() {
+                return getBody();
+            }
 
-    });
+        });
+    }
 });
 
 function getHeader() {
@@ -314,4 +317,8 @@ function getTemplate() {
         <h3 class="popover-header header-edit"></h3>
         <div class="popover-body popover-body-edit"></div>
     </div>`;
+}
+
+function detectMob() {
+    return ((window.innerWidth <= 800) && (window.innerHeight <= 600));
 }

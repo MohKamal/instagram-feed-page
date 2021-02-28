@@ -362,7 +362,10 @@ body {
 .user-link {
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap
+    white-space: nowrap;
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
 }
 
 .popover-edit {
@@ -385,10 +388,13 @@ body {
     border-radius: 5px;
     width: 190px;
     display: block;
+    background-color: inherit;
 }
 
 .popover-btn:hover {
     color: black;
+    cursor: pointer;
+    background-color: lightgray;
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
