@@ -2,11 +2,12 @@
 <html>
 
 <head>
-    <title>Instagram Template</title>
+    <title>Instagram</title>
     <meta charset="UTF-8" />
     <meta name="author" content="MOURCHID Mohamed Kamal" />
     <meta name="description" content="Like Instagram template with Vue.Js" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="assets/images/favicon.ico" />
     <meta name="github" content="https://github.com/mohkamal" />
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="assets/css/app.css" />
@@ -19,7 +20,7 @@
         <div class="container custom-container mt-5 pg-sm-0 main">
             <div class="row">
                 <div class="col-lg-8 col-md-12">
-                    <post v-for="post in posts" :post="post" :key="post.id"></post>
+                    <post v-for="post in posts" :post="post" :key="post.id" v-on:hover-on="getCurrentPost"></post>
                 </div>
                 <div class="col-lg-4 hide-sm my-5">
                     <!-- Side Bar Start -->
@@ -85,7 +86,6 @@
     </div>
 
     <script src="assets/js/jquery-3.5.1.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/vue.js"></script>
     <script src="assets/js/app.js"></script>

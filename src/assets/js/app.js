@@ -1,9 +1,4 @@
 Vue.component('nav-bar', {
-    data: function() {
-        return {
-            count: 0
-        }
-    },
     template: `
     <nav class="navbar navbar-expand-lg navbar-light nav-bottom-border fixed-top bg-white">
         <div class="container custom-container">
@@ -72,22 +67,15 @@ Vue.component('sidebar-profile', {
             <span class="sidebar-name">Karlex</span>
         </div>
         <div class="col-2">
-            <a href="#" class="btn-change-profile">Basculer</a>
+            <a href="#" class="btn-change-profile">Switch</a>
         </div>
     </div>`
-});
-
-Vue.component('emoji-btn', {
-    props: ["emoji"],
-    template: `
-    <button class="flat-btn"><span v-html="emoji"></span></button>`
 });
 
 Vue.component('post', {
     data: function() {
         return {
             writing: false,
-            emojis: ["&#128507;", "&#128508;", "&#128509;", "&#128510;", "&#128511;", "&#128512;", "&#128513;", "&#128514;", "&#128515;", "&#128515;", "&#128517;"]
         }
     },
     props: {
@@ -106,9 +94,9 @@ Vue.component('post', {
     <div class="container bg-white p-0 post my-5">
         <div class="row p-3">
             <div class="col-1 pg-sm-0">
-                <a href="#">
+                <button class="post-logo-btn flat-btn p-0" @mouseover="$emit('hover-on', post.id)">
                     <img :src="post.logo" class="img-fluid rounded-circle">
-                </a>
+                </button>
             </div>
             <div class="col-10">
                 <h5 class="post-title m-0"><a href="#">{{ post.username }}</a></h5>
@@ -117,7 +105,7 @@ Vue.component('post', {
                 </p>
             </div>
             <div class="col-1 post-burger">
-                <button class="post-burger-btn" data-bs-toggle="modal" data-bs-target="#postOptionsModal">
+                <button class="post-burger-btn" @click.prevent data-bs-toggle="modal" data-bs-target="#postOptionsModal">
                     <svg aria-label="Plus d’options" class="_8-yf5 " fill="#262626" height="16" viewBox="0 0 48 48" width="16"><circle clip-rule="evenodd" cx="8" cy="24" fill-rule="evenodd" r="4.5"></circle><circle clip-rule="evenodd" cx="24" cy="24" fill-rule="evenodd" r="4.5"></circle><circle clip-rule="evenodd" cx="40" cy="24" fill-rule="evenodd" r="4.5"></circle></svg>
                 </button>
             </div>
@@ -199,6 +187,16 @@ var vm = new Vue({
     data: {
         suggestions: [],
         posts: [],
+        current_post_id: -1,
+        current_post: null,
+    },
+    methods: {
+        getCurrentPost: function(event) {
+            this.current_post_id = event;
+            this.current_post = vm.posts.find(obj => {
+                return obj.id === event
+            });
+        }
     },
     created: function() {
         // Alias the component instance as `vm`, so that we
@@ -212,21 +210,13 @@ var vm = new Vue({
         $.getJSON("assets/json/posts.json", function(data) {
             vm.posts = data;
         });
-
-
     }
 
 });
 
-// Jqeury
+// Jquery
 
 $(document).ready(function() {
-    $(".more").toggle(function() {
-        $(this).text("less..").siblings(".complete").show();
-    }, function() {
-        $(this).text("more..").siblings(".complete").hide();
-    });
-
     $('.emojis-btn').popover({
         container: 'body',
         title: "Emoji's",
@@ -242,5 +232,81 @@ $(document).ready(function() {
             btns += '</div>'
             return btns;
         }
-    })
+    });
+
+    $('.post-logo-btn').popover({
+        container: 'body',
+        title: function() {
+            return getHeader();
+        },
+        animation: true,
+        template: getTemplate(),
+        html: true,
+        placement: "bottom",
+        content: function() {
+            return getBody();
+        }
+
+    });
 });
+
+function getHeader() {
+    return `
+        <div class="row">
+            <div class="col-md-3">
+                <img src="${vm.current_post.logo}" class="img-fluid rounded-circle">
+            </div>
+            <div class="col-md-9">
+                <h6 class="m-0">${vm.current_post.username}</h6>
+                <span class="sub-username">${vm.current_post.username.toUpperCase()}</span>
+                <a href="https://l.instagram.com/?u=https%3A%2F%2Fwww.bugatti.com%2Flegal-notices-social-media%2F&e=ATMgmTyR4-WlxAyUsFgON5J0G4-Rm1-brlqLk_Fo7x_3QdKm5d29-Wu769IITAeJTe2zCViKPl8oU2a7_kUFZHQ&s=1"><p class="user-link mt-3 mb-1">https://l.instagram.com/?u=https%3A%2F%2Fwww.bugatti.com%2Flegal-notices-social-media%2F&e=ATMgmTyR4-WlxAyUsFgON5J0G4-Rm1-brlqLk_Fo7x_3QdKm5d29-Wu769IITAeJTe2zCViKPl8oU2a7_kUFZHQ&s=1</p></a>
+            </div>
+        </div>`;
+}
+
+function getBody() {
+    return `
+        <div class="row p-4">
+            <div class="col-md-4 text-center">
+                <p class="m-0 font-weight-bold">${new Intl.NumberFormat().format(1216)}</p>
+                <span class="sub-username">posts</span>
+            </div>
+            <div class="col-md-4 text-center">
+                <p class="m-0 font-weight-bold">13.8m</p>
+                <span class="sub-username">followers</span>
+            </div>
+            <div class="col-md-4 text-center">
+                <p class="m-0 font-weight-bold">266</p>
+                <span class="sub-username">following</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 p-0">
+                <img src="assets/images/preview_01.jpg" class="img-fluid">
+            </div>
+            <div class="col-md-4 p-0">
+                <img src="assets/images/preview_02.jpg" class="img-fluid">
+            </div>
+            <div class="col-md-4 p-0">
+                <img src="assets/images/preview_03.jpg" class="img-fluid">
+            </div>
+        </div>
+        <div class="row p-4">
+            <div class="col-md-6">
+                <a href="javascript:void(0);" class="py-2 text-center popover-btn">Message</a>
+            </div>
+            <div class="col-md-6">
+                <a href="javascript:void(0);" class="py-2 text-center popover-btn">Following</a>
+            </div>
+        </div>
+    `;
+}
+
+function getTemplate() {
+    return `
+    <div class="popover popover-edit" role="tooltip">
+        <div class="popover-arrow"></div>
+        <h3 class="popover-header header-edit"></h3>
+        <div class="popover-body popover-body-edit"></div>
+    </div>`;
+}

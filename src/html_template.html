@@ -72,9 +72,9 @@
                             </p>
                         </div>
                         <div class="col-1 post-burger">
-                            <a href="#">
+                            <button class="post-burger-btn" data-bs-toggle="modal" data-bs-target="#postOptionsModal">
                                 <svg aria-label="Plus d’options" class="_8-yf5 " fill="#262626" height="16" viewBox="0 0 48 48" width="16"><circle clip-rule="evenodd" cx="8" cy="24" fill-rule="evenodd" r="4.5"></circle><circle clip-rule="evenodd" cx="24" cy="24" fill-rule="evenodd" r="4.5"></circle><circle clip-rule="evenodd" cx="40" cy="24" fill-rule="evenodd" r="4.5"></circle></svg>
-                            </a>
+                            </button>
                         </div>
                     </div>
                     <div class="row">
@@ -105,7 +105,8 @@
                         <div class="col-12">
                             <div class="description">
                                 <span><a href="#" class="post-user">bugatti</a></span>
-                                <span> A few lucky BUGATTI enthusiasts had the chance to drive the BUGATTI Baby II at top speed in its delimited “speed key” mode on the historic racetrack at the renowned Willow Springs International Raceway. The Southern California sunset always creates a spectacular setting.</span>
+                                <span class="descriptionSpan"> A few lucky BUGATTI enthusiasts had the chance to drive the BUGATTI Baby II at top speed in its delimited “speed key” mode on the historic racetrack at the renowned Willow Springs International Raceway. The Southern California sunset always creates a spectacular setting.</span>
+                                <a href="javascript:void(0)" class="more">more...</a>
                             </div>
                         </div>
                         <div class="col-12 mt-4">
@@ -141,9 +142,9 @@
                             <form>
                                 <div class="row post-comment-form pt-3 mt-2">
                                     <div class="col-1 d-flex justify-content-center">
-                                        <a href="#">
+                                        <button class="flat-btn emojis-btn">
                                             <svg aria-label="Emoji" class="_8-yf5 " fill="#262626" height="24" viewBox="0 0 48 48" width="24"><path d="M24 48C10.8 48 0 37.2 0 24S10.8 0 24 0s24 10.8 24 24-10.8 24-24 24zm0-45C12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21S35.6 3 24 3z"></path><path d="M34.9 24c0-1.4-1.1-2.5-2.5-2.5s-2.5 1.1-2.5 2.5 1.1 2.5 2.5 2.5 2.5-1.1 2.5-2.5zm-21.8 0c0-1.4 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5-2.5-1.1-2.5-2.5zM24 37.3c-5.2 0-8-3.5-8.2-3.7-.5-.6-.4-1.6.2-2.1.6-.5 1.6-.4 2.1.2.1.1 2.1 2.5 5.8 2.5 3.7 0 5.8-2.5 5.8-2.5.5-.6 1.5-.7 2.1-.2.6.5.7 1.5.2 2.1 0 .2-2.8 3.7-8 3.7z"></path></svg>
-                                        </a>
+                                        </button>
                                     </div>
                                     <div class="col-9 d-flex justify-content-center">
                                         <input placeholder="Ajouter un commentaire..." class="post-comment-input" />
@@ -269,9 +270,45 @@
         </div>
     </div>
     <!-- Content End -->
+    <!-- Modal -->
+    <div class="modal fade-scale" id="postOptionsModal" tabindex="-1" aria-labelledby="PostOptions" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content modal-edit">
+                <div class="modal-body p-0">
+                    <button class="danger-btn option-btn p-3">Report</button>
+                    <button class="danger-btn option-btn p-3">Unfollow</button>
+                    <button class="option-btn p-3">Go to post</button>
+                    <button class="option-btn p-3">Share to...</button>
+                    <button class="option-btn p-3">Copy Link</button>
+                    <button class="option-btn p-3">Embed</button>
+                    <button class="option-btn p-3" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <script src="assets/js/jquery-3.5.1.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $('.emojis-btn').popover({
+            container: 'body',
+            title: "Emoji's",
+            animation: true,
+            html: true,
+            placement: "top",
+            content: function() {
+                var btns = '<div class="row">';
+                var codes = ['&#128507;', '&#128508;', '&#128509;', '&#128510;', '&#128511;', '&#128512;', '&#128513;', '&#128514;', '&#128515;', '&#128516;', '&#128517;'];
+                $.each(codes, function(key, value) {
+                    btns += `<div class="col-3"><a href="javascript:void(0)" class="flat-btn" data-value="${value}"><span>${value}</span></a></div>`;
+                });
+                btns += '</div>'
+                return btns;
+            }
+        })
+    </script>
 </body>
 
 </html>

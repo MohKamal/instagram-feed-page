@@ -23,6 +23,10 @@ body {
     background-color: #fff;
 }
 
+.font-weight-bold {
+    font-weight: bold;
+}
+
 
 /* NavBar */
 
@@ -339,6 +343,47 @@ body {
 .fade-scale.show {
     opacity: 1;
     transform: scale(1);
+}
+
+
+/* Post User Popover */
+
+.sub-username {
+    font-size: 0.8rem;
+    color: #8e8e8e;
+    text-transform: capitalize;
+}
+
+.user-link {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap
+}
+
+.popover-edit {
+    max-width: 476px !important;
+}
+
+.popover-body-edit {
+    padding: 0rem .8rem;
+}
+
+.header-edit {
+    background-color: unset;
+    padding: 1.2rem !important;
+}
+
+.popover-btn {
+    text-decoration: none;
+    color: black;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 190px;
+    display: block;
+}
+
+.popover-btn:hover {
+    color: black;
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
