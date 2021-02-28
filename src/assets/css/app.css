@@ -294,17 +294,22 @@ body {
 }
 
 .more {
-    color: #8e8e8e;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap
+}
+
+.more-btn {
+    color: gray;
     text-decoration: none;
+}
+
+.more-btn:hover {
+    color: gray;
 }
 
 .descriptionSpan {
     height: 20px;
-}
-
-.more:hover {
-    text-decoration: none;
-    color: #8e8e8e;
 }
 
 

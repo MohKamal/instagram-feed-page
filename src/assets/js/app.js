@@ -76,6 +76,7 @@ Vue.component('post', {
     data: function() {
         return {
             writing: false,
+            moreClass: false,
         }
     },
     props: {
@@ -88,6 +89,9 @@ Vue.component('post', {
             } else {
                 this.writing = false;
             }
+        },
+        changeMore: function() {
+            this.moreClass = !this.moreClass;
         }
     },
     template: `
@@ -138,7 +142,8 @@ Vue.component('post', {
             <div class="col-12">
                 <div class="description">
                     <span><a href="#" class="post-user">{{ post.username }}</a></span>
-                    <span v-html="post.description"></span>
+                    <div :class="{ 'more': !this.moreClass }" v-html="post.description"></div>
+                    <a v-if="!moreClass" class="more-btn" href="javascript:void(0);" @click="changeMore">more</a>
                 </div>
             </div>
             <div class="col-12 mt-4">
